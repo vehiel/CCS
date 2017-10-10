@@ -11,6 +11,7 @@
 		}
 
 		public function index(){
+			$rs = $this->usuario->listarUsuario();
 			require_once "views/header.php";
 			require_once "views/usuario/index.php";
 			require_once "views/footer.php";

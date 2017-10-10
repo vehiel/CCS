@@ -67,8 +67,8 @@
 				    <div class="form-group">
 				    	
 				      <label for="inputEmail" class="control-label">Estado</label>
-				      (Estado actual: <?php echo $datos['est_02vc']; ?>)
-				        <select class="form-control" name="est_02vc">
+				      (Estado actual: <?php echo $datos['est_02in']; ?>)
+				        <select class="form-control" name="est_02in">
 				        	<option value="1">Activo</option>
 				        	<option value="0">Inactivo</option>
 				        </select> 

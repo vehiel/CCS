@@ -23,9 +23,9 @@ else
     call_user_func( array( $controller, $metodo ) );
 }
 
-// require_once "models/usuario.php";
+//require_once "models/usuario.php";
 
-// $usuario = new Usuario();
+//$usuario = new Usuario();
 // $usuario->set("idp_01in",'504080764');
 // $usuario->set("nom_01vc",'VEHIEL');
 // $usuario->set("ap1_01vc",'ALEMAN');
@@ -41,7 +41,7 @@ else
 // $usuario->set("con_02vc",'VEHIELPASS');
 // $usuario->set("nic_02vc",'1');
 // $usuario->set("idr_03in",'1');
-// $usuario->insertarUsuario();
+//$usuario->buscarUsuario(504080760);
 
 
 ?>

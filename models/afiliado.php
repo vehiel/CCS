@@ -19,9 +19,6 @@ class Afiliado extends Persona
 		public function set($atributo, $contenido){
 			$this->$atributo = $contenido;
 		}
-		public function get($atributo){
-			return $this->$atributo;
-		}
 		public function insertarAfiliado(){
 			$sql = "INSERT INTO `ccs06afi` (`IDP_01IN`, `NAF_06IN`, `NCU_06VC`, `EAC_06IN`, `EMO_06IN`,`OBS_06VC`)VALUES('{$this->idp_01in}', '{$this->naf_06in}', '{$this->ncu_06vc}','{$this->eac_06in}','{$this->emo_06in}','{$this->obs_06vc}');";
 			$this->con->consultaSimple($sql);
