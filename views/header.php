@@ -19,7 +19,7 @@
 		      </button>
 		      <a class="navbar-brand" href="?c=usuario">Camara de Ganaderos de Hojancha</a>
 		    </div>
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+		    <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2"> -->
 		      <ul class="nav navbar-nav">
 		        <!-- <li><a href="<?php echo URL; ?>">Inicio</a></li> -->
 		        <li class="dropdown">
@@ -31,8 +31,16 @@
 		            <!-- <li><a href="?=c=usuario&m=">Catalogo</a></li> -->
 		          </ul>
 		        </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inversiones <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="?c=Inversion&m=index">Catalogo</a></li>
+		
+		          </ul>
+		        </li>
 		      </ul>
-		    </div>
+
+		    <!-- </div> -->
 		  </div>
 		</nav>
 		</div>

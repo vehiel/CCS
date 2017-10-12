@@ -80,7 +80,7 @@ class Usuario extends Persona
 			if(!($resultado = $statement->get_result()))
 			$statement->close();
 			$this->con->cerrarConexion();
-			// $sql = "SELECT t1.IDP_01IN as idp_01in,t1.NOM_01VC as nom_01vc ,t1.AP1_01VC as ap1_01vc,t1.AP2_01VC as ap2_01vc,t1.TEL_01VC as tel_01vc,t1.EMA_01VC as ema_01vc, t1.DIR_01VC as dir_01vc, t1.GEN_01IN as gen_01in, t1.FNA_01DT as fna_01dt, t2.IDR_03IN as idr_03in , t2.NUS_02IN as nus_02in, t2.EST_02IN as est_02in, t2.CON_02VC as con_02vc FROM ccs01per t1 INNER JOIN ccs02usu t2 ON t1.IDP_01IN = t2.IDP_01IN  WHERE t1.IDP_01IN ='$id'";
+			$sql = "SELECT t1.IDP_01IN as idp_01in,t1.NOM_01VC as nom_01vc ,t1.AP1_01VC as ap1_01vc,t1.AP2_01VC as ap2_01vc,t1.TEL_01VC as tel_01vc,t1.EMA_01VC as ema_01vc, t1.DIR_01VC as dir_01vc, t1.GEN_01IN as gen_01in, t1.FNA_01DT as fna_01dt, t2.IDR_03IN as idr_03in , t2.NUS_02IN as nus_02in, t2.EST_02IN as est_02in, t2.CON_02VC as con_02vc FROM ccs01per t1 INNER JOIN ccs02usu t2 ON t1.IDP_01IN = t2.IDP_01IN  WHERE t1.IDP_01IN ='$id'";
 			// $datos = $this->con->consultaRetorno($sql);
 			// $this->con->cerrarConexion();
 			$row = mysqli_fetch_assoc($resultado);

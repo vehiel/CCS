@@ -23,9 +23,10 @@ else
     call_user_func( array( $controller, $metodo ) );
 }
 
-//require_once "models/usuario.php";
+// require_once "models/catInversion.php";
 
-//$usuario = new Usuario();
+// $usuario = new catInversion();
+//  $usuario->nombreColx2();
 // $usuario->set("idp_01in",'504080764');
 // $usuario->set("nom_01vc",'VEHIEL');
 // $usuario->set("ap1_01vc",'ALEMAN');
@@ -37,11 +38,14 @@ else
 // $usuario->set("fna_01dt",'1996-01-15');
 
 
-// $usuario->set("nus_02in",'555');
-// $usuario->set("con_02vc",'VEHIELPASS');
-// $usuario->set("nic_02vc",'1');
-// $usuario->set("idr_03in",'1');
-//$usuario->buscarUsuario(504080760);
+// $usuario->set("idi_08in",'555');
+// $usuario->set("inv_08vc","VEHIELPASS");
+// $usuario->set("des_08vc","prasepuedetenertodoelsexoquequieraxd");
+// $usuario->set("mma_08fl",'10001');
+// $usuario->set("mmi_08fl",'1112');
 
+//$dotos = $usuario->listarInversion();
+// $row = mysqli_fetch_array($dotos);
+// print_r($dotos);
 
 ?>
