@@ -32,6 +32,7 @@
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Genero</label>
 				        <select class="form-control" name="gen_01in">
+				        	<option value="<?php echo $datos['gen_01in']; ?>">Sin Cambios</option>
 				        	<option value="1">Masculino</option>
 				        	<option value="2">Femenino</option>
 				        </select> 
