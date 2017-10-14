@@ -72,7 +72,7 @@
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Observaciones</label>
-				        <input class="form-control" name="obs_06vc" type="text" >
+				        <input class="form-control" name="obs_06vc" type="text" required>
 				    </div>
 
 				    <div class="form-group">

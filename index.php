@@ -23,19 +23,23 @@ else
     call_user_func( array( $controller, $metodo ) );
 }
 
-// require_once "models/catInversion.php";
+// require_once "models/solicitud.php";
 
-// $usuario = new catInversion();
-//  $usuario->nombreColx2();
-// $usuario->set("idp_01in",'504080764');
-// $usuario->set("nom_01vc",'VEHIEL');
-// $usuario->set("ap1_01vc",'ALEMAN');
-// $usuario->set("ap2_01vc",'campos');
-// $usuario->set("tel_01vc",'87221859');
-// $usuario->set("gen_01in",'1');
-// $usuario->set("ema_01vc",'VE@GMAIL.COM');
-// $usuario->set("dir_01vc",'AQUI');
-// $usuario->set("fna_01dt",'1996-01-15');
+// $usuario = new Solicitud();
+
+// $hoy= getdate();
+// $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
+// $usuario->set("nso_in",'101');
+// $usuario->set("naf_in",'600');
+// $usuario->set("idi_in",'800');
+// $usuario->set("cga_in",'901');
+// $usuario->set("fso_dt","$fecha");
+// $usuario->set("fre_dt",'null');
+// $usuario->set("fap_dt",'null');
+// $usuario->set("est_in",'1');
+// $usuario->set("mca_fl",'123456789');
+// $usuario->insertarSolicitud();
+
 
 
 // $usuario->set("idi_08in",'555');
@@ -44,8 +48,8 @@ else
 // $usuario->set("mma_08fl",'10001');
 // $usuario->set("mmi_08fl",'1112');
 
-//$dotos = $usuario->listarInversion();
-// $row = mysqli_fetch_array($dotos);
-// print_r($dotos);
+// $dotos = $usuario->buscarSolicitud(101);
+// // $row = mysqli_fetch_array($dotos);
+//  print_r($dotos);
 
 ?>

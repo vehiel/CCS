@@ -32,12 +32,13 @@
 		          </ul>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inversiones <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inv/Sol <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="?c=Inversion&m=index">Catalogo</a></li>
-		
+		            <li><a href="?c=Inversion&m=index">inversiones</a></li>
+					<li><a href="?c=solicitud&m=index">solicitudes</a></li>
 		          </ul>
 		        </li>
+		        
 		      </ul>
 
 		    <!-- </div> -->
