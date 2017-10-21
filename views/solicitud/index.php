@@ -1,6 +1,7 @@
 	<div class="container">
 		<h2>Solicitud de Credito</h2>
-		<a href="?c=solicitud&m=agregar" class="btn btn-default" role="button">Agregar Solicitud</a>
+		<a href="?c=solicitud&m=Agregar" class="btn btn-default" role="button">Agregar Solicitud</a>
+    <!-- <a href="?c=solicitud&m=editarCon" class="btn btn-default" role="button">Actualizar Contraseña</a> -->
 		<div class="row">
 			<div class="col-md-12">
 				<table id="example" class="display" cellspacing="0" width="100%">
@@ -36,8 +37,9 @@
                           <td><?php echo $row[4]; ?></td>
                           <td><?php echo $row[5]; ?></td>
                           <td><?php echo $row[6]; ?></td>
-                          <td><?php echo $row[7]; ?></td>
+                          <!-- <td><?php echo $row[7]; ?></td>
                           <td><?php echo $row[8]; ?></td>
+                          <td><?php echo $row[9]; ?></td> -->
                           <td>
                             <div class="dropdown">
                             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Opciones
@@ -45,7 +47,7 @@
                             </button>
                               <ul class="dropdown-menu">
                                 <li>
-                                    <a href="?c=solicitud&m=editar&id=<?php echo $row[0]; ?>">
+                                    <a href="?c=solicitud&m=editar&idS=<?php echo $row[0]; ?>">
                                     <span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                 </li>
                                 <li>
@@ -55,11 +57,11 @@
                                  <li>
                                   <a href="?c=solicitud&m=ver&id=<?php echo $row[0]; ?>">
                                    <span class="glyphicon glyphicon-eye-open"></span> ver</a>
-                                </li>
-                                <li>
+                                </li><!-- glyphicon glyphicon-menu-hamburger -->
+                                <!-- <li>
                                   <a href="?c=solicitud&m=aprovar&id=<?php echo $row[0]; ?>">
                                     <span class="glyphicon glyphicon-trash"></span>Aprovar Solicitud</a>
-                                </li>
+                                </li> -->
                               </ul>
                             </div>
                           </td>

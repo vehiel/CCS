@@ -9,12 +9,12 @@
 					<tr>
 	                    <th>Cédula</th>
 	                    <th>Nombre</th>
-	                    <th>Primer Apellido</th>
-	                    <th>Segundo Apellido</th>
-	                    <th>Telefono</th>
-	                    <th>Correo</th>
-	                    <th>Direccion</th>
-	                    <th style="width: 120px;">Más</th>
+	                    <th>Teléfono</th>
+                      <th>Género</th>
+	                    <th>Email</th>
+	                    <th>Dirección</th>
+                      <th>Numero Afiliado</th>
+                      <th style="width: 120px;">Más</th>
                 	</tr>
 				</thead>
 				 <tfoot>
@@ -32,13 +32,13 @@
                 <tbody>
                 	 <?php while ($row = mysqli_fetch_array($rs)):?>
                         <tr>
-                		  <td><?php echo $row['ID']; ?></td>
+                		  <td><a href="?c=afiliado&m=ver&id=<?php echo $row[0]; ?>"><?php echo $row[0]; ?></a></td>
                           <td><?php echo $row['Nombre']; ?></td>
-                          <td><?php echo $row['Apellido1']; ?></td>
-                          <td><?php echo $row['Apellido2']; ?></td>
-                          <td><?php echo $row['Telefono']; ?></td>
-                          <td><?php echo $row['Correo']; ?></td>
-                          <td><?php echo $row['Direccion']; ?></td>
+                          <td><?php echo $row[2]; ?></td>
+                          <td><?php echo $row[3]; ?></td>
+                          <td><?php echo $row['Email']; ?></td>
+                          <td><?php echo $row[5]; ?></td>
+                          <td><?php echo $row[7]; ?></td>
                           <td>
                             <div class="dropdown">
                             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Opciones
@@ -46,15 +46,15 @@
                             </button>
                               <ul class="dropdown-menu">
                                 <li>
-                                    <a href="?c=afiliado&m=editar&id=<?php echo $row['ID']; ?>">
+                                    <a href="?c=afiliado&m=editar&id=<?php echo $row[0]; ?>">
                                     <span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                 </li>
                                 <li>
-                                  <a href="?c=afiliado&m=eliminar&id=<?php echo $row['ID']; ?>">
+                                  <a href="?c=afiliado&m=eliminar&id=<?php echo $row[0]; ?>">
                                    <span class="glyphicon glyphicon-trash"></span> Eliminar</a>
                                 </li>
                                  <li>
-                                  <a href="?c=afiliado&m=ver&id=<?php echo $row['ID']; ?>">
+                                  <a href="?c=afiliado&m=ver&id=<?php echo $row[0]; ?>">
                                    <span class="glyphicon glyphicon-eye-open"></span> ver</a>
                                 </li>
                               </ul>

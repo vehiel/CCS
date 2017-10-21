@@ -60,7 +60,7 @@
 			if (!$_POST) {
 				$inversion = $this->inversion->listarInversion();
 				$afiliado = $this->afiliado->listarAfiliado();
-				$sol = $this->solicitud->buscarSolicitud($_REQUEST['id']);
+				$sol = $this->solicitud->buscarSolicitud("editar",$_REQUEST['idS']);
 				//$row = mysqli_fetch_array($afiliado);
 					// var_dump($sol);
 				require_once "views/header.php";
@@ -78,7 +78,7 @@
 				// echo "cga_in " . $_POST['cga_in']."<br>";
 				// echo "fso_dt " . $_POST['fso_dt']."<br>";
 				// echo "fre_dt " . $fecha."<br>";
-				// echo "fap_dt " . $_POST['fap_dt']."<br>";
+				// echo "fap_dt " . "NA"."<br>";
 				// echo "est_in " . '2'."<br>";
 				// echo "mca_fl " . $_POST['mca_fl']."<br>";
 				$this->solicitud->set("nso_in",$_POST['nso_in']);
@@ -86,8 +86,8 @@
 				$this->solicitud->set("idi_in",$_POST['idi_in']);
 				$this->solicitud->set("cga_in",$_POST['cga_in']);
 				$this->solicitud->set("fso_dt",$_POST['fso_dt']);
-				$this->solicitud->set("fre_dt",$fecha);
-				$this->solicitud->set("fap_dt",$null);
+				$this->solicitud->set("fre_dt",$_POST['fre_dt']);
+				$this->solicitud->set("fap_dt",$_POST['fap_dt']);
 				$this->solicitud->set("est_in",'2');
 				$this->solicitud->set("mca_fl",$_POST['mca_fl']);
 				$this->solicitud->actualizarSolicitud();
@@ -100,7 +100,7 @@
 			header('location:?c=solicitud');
 		}
 		public function ver(){
-			$sol = $this->solicitud->buscarSolicitud($_REQUEST['id']);
+			$sol = $this->solicitud->buscarSolicitud("ver",$_REQUEST['id']);
 			require_once "views/header.php";
 			require_once 'views/solicitud/ver.php';
 			require_once "views/footer.php";
@@ -113,6 +113,14 @@
 			$this->solicitud->aprovarSolicitud();
 			//echo "nso_in: ". $_REQUEST['id'];
 			header('location:?c=solicitud');
+		}
+		public function rechazar(){
+			echo "PROXIMENTE <br> ";
+
+		}
+		public function cancelar(){
+			echo "PROXIMENTE <br> ";
+
 		}
 	}
  ?>

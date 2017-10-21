@@ -1,4 +1,5 @@
 <?php 
+
 require_once "conexion.php";
 require_once "persona.php";
 class Usuario extends Persona
@@ -6,11 +7,11 @@ class Usuario extends Persona
 	
 		private $con;
 		//usuario
-		//protected $idp_01in;
-		protected $nus_02in;
-		protected $est_02vc;
-		protected $con_02vc;
-		protected $idr_03in;
+		//protected $idp_in;
+		protected $nus_in;
+		protected $est_in;
+		protected $con_vc;
+		protected $idr_in;
 
 		public function __construct(){
 			$this->con = new Conexion();
@@ -23,68 +24,80 @@ class Usuario extends Persona
 		// 	return $this->$atributo;
 		// }
 		public function insertarUsuario(){
-			$sql = "INSERT INTO `ccs02usu` (IDP_01IN, NUS_02IN, CON_02VC, EST_02VC, IDR_03IN)
-					VALUES('{$this->idp_01in}', '{$this->nus_02in}', '{$this->con_02vc}', '{$this->est_02in}','{$this->idr_03in}');";
-					/*INSERT INTO `ccs01per` (IDP_01IN,NOM_01VC,AP1_01VC,AP2_01VC,TEL_01VC,		GEN_01IN,EMA_01VC,DIR_01VC,FNA_01DT)
-					VALUES ('504080764', 'VEHIEL', 'ALEMAN', 'CAMPOS', '87221859', '1', 'VE@GMAIL.COM','AQUI', '1996-01-15');*/
-			// $statement = $this->con->\prepare("CALL SPCCS02INPERUSU(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			// $statement->bind_param("sssssssssssss",504080764,'Penechan','AP1','AP2','87221859',1,'pene@gmail.com','por ahi','1996-01-15',987,'usuario345','penepass',3);
-			// $statement->execute();
-			// $statement->close();
-			// echo "datos guardados, vaya a revisar... esclavo";
-
-
-			// $sql = "INSERT INTO `ccs02usu` (`IDP_01IN`, `NUS_02IN`, `NIC_02VC`, `CON_02VC`, `IDR_03IN`) 
-			// 		VALUES ('$this->idp_01in', '$this->nus_02in', '$this->nic_02vc', '$this->con_02vc', '$this->idr_03in')";
-			$this->con->consultaSimple($sql);
+				// echo "idp_in ".$this->idp_in. "<br>";
+				// echo "nom_vc ".$this->nom_vc. "<br>";
+				// echo "ap1_vc".$this->ap1_vc. "<br>";
+				// echo "ap2_vc ".$this->ap2_vc. "<br>";
+				// echo "tel_vc ".$this->tel_vc. "<br>";
+				// echo "gen_in ".$this->gen_in. "<br>";
+				// echo "ema_vc ".$this->ema_vc. "<br>";
+				// echo "fna_dt ".$this->fna_dt. "<br>";
+				// echo "dir_vc ".$this->dir_vc. "<br>";
+				// echo "nus_in ".$this->nus_in. "<br>";
+				// echo "est_in ".$this->est_in. "<br>";
+				// echo "con_vc ".$this->con_vc. "<br>";
+				// echo "idr_in ".$this->idr_in. "<br>";
+			$statement = $this->con->consultaPreparada("CALL SPCCS02INPERUSU(?,?,?,?,?,?,?,?,?,?,?,?,?);");
+			$statement->bind_param("issssisssisii",$this->idp_in,$this->nom_vc,$this->ap1_vc,$this->ap2_vc,$this->tel_vc,$this->gen_in,$this->ema_vc,$this->dir_vc,$this->fna_dt,$this->nus_in,$this->con_vc,$this->est_in,$this->idr_in);
+			$statement->execute();
+			echo $statement->error;
+			$statement->close();
 			$this->con->cerrarConexion();
-		}
-		public function insertarPersona(){
-			$sql = "INSERT INTO ccs01per ( 
-					IDP_01IN,NOM_01VC,AP1_01VC,AP2_01VC,TEL_01VC,GEN_01IN,EMA_01VC,DIR_01VC,FNA_01DT)
-					VALUES ('{$this->idp_01in}', '{$this->nom_01vc}', '{$this->ap1_01vc}', '{$this->ap2_01vc}', '{$this->tel_01vc}', '{$this->gen_01in}', '{$this->ema_01vc}', '{$this->dir_01vc}', '{$this->fna_01dt}'
-					)";
-			 $this->con->consultaSimple($sql);
-
-		}
+			//$sql = "INSERT INTO `ccs02usu` (IDP_01IN,   NUS_02IN,           CON_02VC, EST_02IN, IDR_03IN) VALUES('{$this->idp_in}','{$this->nus_in}','{$this->con_vc}', '{$this->est_in}','{$this->idr_in}');";
+			
+			}
 		public function listarUsuario(){
-			// $sql = "SELECT t1.IDP_01IN as ID,t1.NOM_01VC as Nombre,t1.AP1_01VC as Apellido1,t1.AP2_01VC as Apellido2,t1.TEL_01VC as Telefono,t1.EMA_01VC as Correo, t1.DIR_01VC as Direccion FROM CCS01PER t1 INNER JOIN ccs02usu t2 on t1.IDP_01IN = t2.IDP_01IN WHERE t2.EST_02VC=1";
-			$sql = "CALL SPCCS02LIPERUSU();";
-			$datos = $this->con->consultaRetorno($sql);
-			return $datos;
+			$estado ='1';
+			$datos = $this->con->consultaRetorno("CALL SPCCS02LIPERUSU($estado);");
 			$this->con->cerrarConexion();
+			return $datos;
 		}
 		public function actualizarUsuario(){
-			$sql = "UPDATE ccs02USU set NUS_02IN='{$this->nus_02in}',EST_02VC='{$this->est_02in}',CON_02VC='{$this->con_02vc}',IDR_03IN='{$this->idr_03in}' WHERE IDP_01IN='{$this->idp_01in}'";
-			$this->con->consultaSimple($sql);
+
+			$statement = $this->con->consultaPreparada("CALL SPCCS02UPPERUSU(?,?,?,?,?,?,?,?,?,?,?,?);");
+			$statement->bind_param("issssisssiii",$this->idp_in,$this->nom_vc,$this->ap1_vc,$this->ap2_vc,$this->tel_vc,$this->gen_in,$this->ema_vc,$this->dir_vc,$this->fna_dt,$this->nus_in,$this->est_in,$this->idr_in);
+			$statement->execute();
+			echo $statement->error;
+			$statement->close();
 			$this->con->cerrarConexion();
 		}
-		public function actualizarPersona(){
-			$sql = "UPDATE ccs01per set NOM_01VC='{$this->nom_01vc}',AP1_01VC='{$this->ap1_01vc}',AP2_01VC='{$this->ap2_01vc}',TEL_01VC='{$this->tel_01vc}',GEN_01IN='{$this->gen_01in}',EMA_01VC='{$this->ema_01vc}',DIR_01VC='{$this->dir_01vc}',FNA_01DT='{$this->fna_01dt}'WHERE IDP_01IN='{$this->idp_01in}'";
-			$this->con->consultaSimple($sql);
-		}
+		
 		public function eliminarUsuario($id){
 			$statement = $this->con->consultaPreparada("CALL SPCCS02DEPERUSU(?);");
 			$statement->bind_param("i",$id);
 			$statement->execute();
 			$statement->close();
 			$this->con->cerrarConexion();
-			// $sql="CALL SPCCS02DEPERUSU($id);";
-			// $this->con->consultaSimple($sql);
-			//$sql = "UPDATE ccs02usu set EST_02VC='0' WHERE IDP_01IN='$id'";
+			
 		}
-		public function buscarUsuario($id){
-			$statement = $this->con->consultaPreparada("CALL SPCCS02BUPERUSU(?);");
-			$statement->bind_param("i",$id);
+		public function buscarUsuario($m,$id){
+			if ($m=="editar") {
+				$statement = $this->con->consultaPreparada("CALL SPCCS02SECEPERUSU(?);");
+				$statement->bind_param("i",$id);
+				//echo "en editar USUARIO";
+			}else {
+				$null = 'NULL';
+				$statement = $this->con->consultaPreparada("CALL SPCCS02SEPERUSU(?,?,?);");
+				$statement->bind_param("iss",$id,$null,$null);
+				//echo "en else USUARIO";
+			}
 			$statement->execute();
 			if(!($resultado = $statement->get_result()))
+			{echo("<b>No  se obtuvieron los datos</b><br>"."(" . $statement->errno . ") " . $statement->error);}
 			$statement->close();
 			$this->con->cerrarConexion();
-			$sql = "SELECT t1.IDP_01IN as idp_01in,t1.NOM_01VC as nom_01vc ,t1.AP1_01VC as ap1_01vc,t1.AP2_01VC as ap2_01vc,t1.TEL_01VC as tel_01vc,t1.EMA_01VC as ema_01vc, t1.DIR_01VC as dir_01vc, t1.GEN_01IN as gen_01in, t1.FNA_01DT as fna_01dt, t2.IDR_03IN as idr_03in , t2.NUS_02IN as nus_02in, t2.EST_02IN as est_02in, t2.CON_02VC as con_02vc FROM ccs01per t1 INNER JOIN ccs02usu t2 ON t1.IDP_01IN = t2.IDP_01IN  WHERE t1.IDP_01IN ='$id'";
-			// $datos = $this->con->consultaRetorno($sql);
-			// $this->con->cerrarConexion();
-			$row = mysqli_fetch_assoc($resultado);
+			$row = mysqli_fetch_array($resultado);
 			return $row;
+			// var_dump($row);
+		}
+		public function actualizarCon($idp,$con){
+			$null = "NULL";
+			$statement = $this->con->consultaPreparada("CALL SPCCS02UPUSUCON(?,?,?);");
+			$statement->bind_param("iis",$idp,$null,$con);
+			$statement->execute();
+			echo "(" . $statement->errno . ") " . $statement->error;
+			$statement->close();
+			$this->con->cerrarConexion();
 			
 		}
 }

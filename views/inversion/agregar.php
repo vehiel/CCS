@@ -1,4 +1,5 @@
 
+ 	<br> <br>
  	<div class="container">
 	<div class="panel panel-success">
 	  <div class="panel-heading">
@@ -10,7 +11,7 @@
 	  		<div class="col-md-10">
 	  			<form class="form-horizontal" action="?c=inversion&m=agregar" method="POST">
 				    <div class="form-group">
-				      <label for="inputEmail" class="control-label">ID Inversion</label>
+				      <label for="inputEmail" class="control-label">Codigo de Inversion</label>
 				        <input class="form-control" name="idi_in" type="text" required>
 				    </div>
 				    <div class="form-group">
@@ -31,7 +32,7 @@
 				    </div>
 				    <div class="form-group">
 				    	 <button type="submit" class="btn btn-success">Registrar</button>
-				        <button type="reset" class="btn btn-warning">Borrar</button>
+				        <a href="?c=inversion" class="btn btn-warning" role="button">Regresar</a>
 				    </div>
 				</form>
 	  		</div>

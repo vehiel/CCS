@@ -22,16 +22,27 @@
 	                   <th style="width: 120px;">Más</th>
           </tr>
 				</thead>
-				 <tfoot>
-                  <tr>
-                  
-                   	<th style="width: 120px;">Más</th>
-                  </tr>
-                </tfoot>
+				<tfoot>
+                    <tr>
+                     <!--  <th>Cédula</th>
+                      <th>Nombre</th>
+                      <th>Primer Apellido</th>
+                      <th>Segundo Apellido</th>
+                      <th>Telefono</th>
+                      <th>Correo</th>
+                      <th>Direccion</th> -->
+                      <?php  
+                       foreach ($info as $valor) {?>
+                        <th><?php echo $valor->name ?></th>
+                        
+                    <?php   }?>
+                     <th style="width: 120px;">Más</th>
+          </tr>
+         </tfoot>
                 <tbody>
                 	 <?php while ($row = mysqli_fetch_array($rs)):?>
                         <tr>
-                		  <td><?php echo $row[0]; ?></td>
+                		  <td><a href="?c=inversion&m=ver&id=<?php echo $row[0] ?>"><?php echo $row[0]; ?></a></td>
                           <td><?php echo $row[1]; ?></td>
                           <td><?php echo $row[2]; ?></td>
                           <td><?php echo $row[3]; ?></td>

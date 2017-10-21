@@ -11,6 +11,7 @@
 		}
 
 		public function index(){
+			$pri = $this->rol->buscarPrivilegios();
 			$rs = $this->usuario->listarUsuario();
 			require_once "views/header.php";
 			require_once "views/usuario/index.php";
@@ -23,22 +24,21 @@
 				require_once "views/usuario/agregar.php";
 				require_once "views/footer.php";
 			}else{
-				//inserta usuario
-
-				$this->usuario->set("idp_01in",$_POST['idp_01in']);
-				$this->usuario->set("nom_01vc",$_POST['nom_01vc']);
-				$this->usuario->set("ap1_01vc",$_POST['ap1_01vc']);
-				$this->usuario->set("ap2_01vc",$_POST['ap2_01vc']);
-				$this->usuario->set("tel_01vc",$_POST['tel_01vc']);
-				$this->usuario->set("gen_01in",$_POST['gen_01in']);
-				$this->usuario->set("ema_01vc",$_POST['ema_01vc']);
-				$this->usuario->set("fna_01dt",$_POST['fna_01dt']);
-				$this->usuario->set("dir_01vc",$_POST['dir_01vc']);
-				$this->usuario->insertarPersona();
-				$this->usuario->set("nus_02in",$_POST['nus_02in']);
-				$this->usuario->set("est_02vc",'1');
-				$this->usuario->set("con_02vc",$_POST['con_02vc']);
-				$this->usuario->set("idr_03in",$_POST['idr_03in']);
+				
+				$this->usuario->set("idp_in",$_POST['idp_in']);
+				$this->usuario->set("nom_vc",$_POST['nom_vc']);
+				$this->usuario->set("ap1_vc",$_POST['ap1_vc']);
+				$this->usuario->set("ap2_vc",$_POST['ap2_vc']);
+				$this->usuario->set("tel_vc",$_POST['tel_vc']);
+				$this->usuario->set("gen_in",$_POST['gen_in']);
+				$this->usuario->set("ema_vc",$_POST['ema_vc']);
+				$this->usuario->set("fna_dt",$_POST['fna_dt']);
+				$this->usuario->set("dir_vc",$_POST['dir_vc']);
+				//$this->usuario->insertarPersona();
+				$this->usuario->set("nus_in",$_POST['nus_in']);
+				$this->usuario->set("est_in",'1');
+				$this->usuario->set("con_vc",$_POST['con_vc']);
+				$this->usuario->set("idr_in",$_POST['idr_in']);
 				$this->usuario->insertarUsuario();
 								
 				header('location:?c=usuario&m=index');
@@ -47,26 +47,32 @@
 		public function editar(){
 			if (!$_POST) {
 			$rol = $this->rol->listarRol();
-			$datos = $this->usuario->buscarUsuario($_REQUEST['id']);
+			$datos = $this->usuario->buscarUsuario("editar",$_REQUEST['id']);
+			//var_dump($datos);
+			//echo "<br><br>";
+			// $time = strtotime($datos['fechaNac']);
+			// $myFormarForView = date("d/m/y g:i A",$time);
+			// echo "formated: ".$myFormarForView;
+			// echo "<br>";
+			// echo "ori: ".$datos['fechaNac'];
 			require_once "views/header.php";
 			require_once 'views/usuario/editar.php';
 			require_once "views/footer.php";
 		}
 		else{
-			$this->usuario->set("idp_01in",$_POST['idp_01in']);
-			$this->usuario->set("nom_01vc",$_POST['nom_01vc']);
-			$this->usuario->set("ap1_01vc",$_POST['ap1_01vc']);
-			$this->usuario->set("ap2_01vc",$_POST['ap2_01vc']);
-			$this->usuario->set("tel_01vc",$_POST['tel_01vc']);
-			$this->usuario->set("gen_01in",$_POST['gen_01in']);
-			$this->usuario->set("ema_01vc",$_POST['ema_01vc']);
-			$this->usuario->set("fna_01dt",$_POST['fna_01dt']);
-			$this->usuario->set("dir_01vc",$_POST['dir_01vc']);
-			$this->usuario->actualizarPersona();
-			$this->usuario->set("nus_02in",$_POST['nus_02in']);
-			$this->usuario->set("est_02vc",$_POST['est_02vc']);
-			$this->usuario->set("con_02vc",$_POST['con_02vc']);
-			$this->usuario->set("idr_03in",$_POST['idr_03in']);
+			$this->usuario->set("idp_in",$_POST['idp_in']);
+			$this->usuario->set("nom_vc",$_POST['nom_vc']);
+			$this->usuario->set("ap1_vc",$_POST['ap1_vc']);
+			$this->usuario->set("ap2_vc",$_POST['ap2_vc']);
+			$this->usuario->set("tel_vc",$_POST['tel_vc']);
+			$this->usuario->set("gen_in",$_POST['gen_in']);
+			$this->usuario->set("ema_vc",$_POST['ema_vc']);
+			$this->usuario->set("fna_dt",$_POST['fna_dt']);
+			$this->usuario->set("dir_vc",$_POST['dir_vc']);
+			//$this->usuario->actualizarPersona();
+			$this->usuario->set("nus_in",$_POST['nus_in']);
+			$this->usuario->set("est_in",$_POST['est_in']);
+			$this->usuario->set("idr_in",$_POST['idr_in']);
 			$this->usuario->actualizarUsuario();
 
 			header('location:?c=usuario');
@@ -79,10 +85,26 @@
 			header('location:?c=usuario');
 		}
 		public function ver(){
-			$datos = $this->usuario->buscarUsuario($_REQUEST['id']);
+			$datos = $this->usuario->buscarUsuario("ver",$_REQUEST['id']);
+
+			$rol = $this->rol->buscarRol($datos['rol']);
+			//print_r($rol);
+
 			require_once "views/header.php";
 			require_once 'views/usuario/ver.php';
 			require_once "views/footer.php";
 		}
+		public function editarCon(){
+			//echo "idp ".$_POST['idp_in']." <br>";
+			if ($_POST['con']==$_POST['Rcon']) {
+				// echo "== <br>";
+			$this->usuario->actualizarCon($_POST['idp_in'],$_POST['Rcon']);
+			}
+			else{
+				echo "las contrasenas no coinciden <br>";
+			}
+			header('location:?c=usuario');
+		}
+		
 	}
  ?>

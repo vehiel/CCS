@@ -21,16 +21,20 @@ class Inversion{
 			$statement = $this->con->consultaPreparada("CALL SPCCS08ININV(?,?,?,?,?);");
 			$statement->bind_param("issdd",$this->idi_in,$this->inv_vc,$this->des_vc,$this->mma_fl,$this->mmi_fl);
 			$statement->execute();
+			echo $statement->error;
 			$statement->close();
 			$this->con->cerrarConexion();
 		}
 		
 		public function listarInversion(){
-			$sql = "SELECT * FROM ccs08inv";
-			//$sql = "CALL SPCCS02LIPERUSU();";
-			$datos = $this->con->consultaRetorno($sql);
-			return $datos;
+			$statement = $this->con->consultaPreparada("CALL SPCCS08LIINV();");
+			$statement->execute();
+			if(!($resultado= $statement->get_result())){
+				echo("<b>No obtuvieron los datos</b><br>".$statement->error);
+			}
+			$statement->close();
 			$this->con->cerrarConexion();
+			return $resultado;
 		}
 		public function actualizarInversion(){
 			$statement = $this->con->consultaPreparada("CALL SPCCS08UPINV(?,?,?,?,?);");
@@ -52,7 +56,7 @@ class Inversion{
 			$statement->bind_param("i",$id);
 			$statement->execute();
 			if(!($resultado = $statement->get_result())){
-				echo("<b>No obtuvieron los datos</b><br>");
+				echo("<b>No obtuvieron los datos</b><br>".$statement->error);
 			}
 			$statement->close();
 			$this->con->cerrarConexion();
@@ -60,19 +64,6 @@ class Inversion{
 			return $row;
 			
 		}
-		// 	public function nombreCol($id){
-		// 	$statement = $this->con->consultaPreparada("CALL SPCCS08SEINV(?);");
-		// 	$statement->bind_param("i",$id);
-		// 	$statement->execute();
-		// 	if(!($resultado = $statement->get_result())){
-		// 		echo("<b>No obtuvieron los datos</b><br>");
-		// 	}
-		// 	$statement->close();
-		// 	$this->con->cerrarConexion();
-		// 	$row = mysqli_fetch_array($resultado);
-		// 	return $row;
-			
-		// }
 		
 }
 

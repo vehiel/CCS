@@ -4,41 +4,47 @@
 		<div class="row">
 			<div class="col-md-12">
 				<table id="example" class="display" cellspacing="0" width="100%">
-				<?php if ($rs->num_rows) { ?>
+				<?php if ($datos->num_rows) { ?>
 				<thead>
 					<tr>
 	                    <th>Cédula</th>
 	                    <th>Nombre</th>
-	                    <th>Primer Apellido</th>
-	                    <th>Segundo Apellido</th>
-	                    <th>Telefono</th>
-	                    <th>Correo</th>
-	                    <th>Direccion</th>
-	                    <th style="width: 120px;">Más</th>
+	                    <th>Teléfono</th>
+                      <th>Género</th>
+                      <th>Email</th>
+                      <th>Dirección</th>
+                      <!-- <th>Fecha Nacimiento</th> -->
+	                    <th>Código Fiador</th>
+                      <th>Empleo</th>
+	                    <th style="width: 120px;"></th>
                 	</tr>
 				</thead>
 				 <tfoot>
                   <tr>
-                    <th>Cédula</th>
-	                <th>Nombre</th>
-	                <th>Primer Apellido</th>
-	                <th>Segundo Apellido</th>
-	                <th>Telefono</th>
-	                <th>Correo</th>
-	                <th>Direccion</th>
-                   	<th style="width: 120px;">Más</th>
+                      <th>Cédula</th>
+                      <th>Nombre</th>
+                      <th>Teléfono</th>
+                      <th>Género</th>
+                      <th>Email</th>
+                      <th>Dirección</th>
+                      <!-- <th>Fecha Nacimiento</th> -->
+                      <th>Código Fiador</th>
+                      <th>Empleo</th>
+                      <th style="width: 120px;"></th>
                   </tr>
                 </tfoot>
                 <tbody>
-                	 <?php while ($row = mysqli_fetch_array($rs)):?>
+                	 <?php while ($row = mysqli_fetch_array($datos)):?>
                         <tr>
-                		  <td><?php echo $row['ID']; ?></td>
-                          <td><?php echo $row['Nombre']; ?></td>
-                          <td><?php echo $row['Apellido1']; ?></td>
-                          <td><?php echo $row['Apellido2']; ?></td>
-                          <td><?php echo $row['Telefono']; ?></td>
-                          <td><?php echo $row['Correo']; ?></td>
-                          <td><?php echo $row['Direccion']; ?></td>
+                		  <td><a href="?c=fiador&m=ver&id=<?php echo $row[0]; ?>"><?php echo $row[0]; ?></a></td>
+                          <td><?php echo $row[1]; ?></td>
+                          <td><?php echo $row[2]; ?></td>
+                          <td><?php echo $row[3]; ?></td>
+                          <td><?php echo $row[4]; ?></td>
+                          <td><?php echo $row[5]; ?></td>
+                          <!-- <td><?php echo $row[6]; ?></td> -->
+                          <td><?php echo $row[7]; ?></td>
+                          <td><?php echo $row[8]; ?></td>
                           <td>
                             <div class="dropdown">
                             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Opciones
@@ -46,15 +52,15 @@
                             </button>
                               <ul class="dropdown-menu">
                                 <li>
-                                    <a href="?c=fiador&m=editar&id=<?php echo $row['ID']; ?>">
+                                    <a href="?c=fiador&m=editar&id=<?php echo $row[0]; ?>">
                                     <span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                 </li>
                                 <li>
-                                  <a href="?c=fiador&m=eliminar&id=<?php echo $row['ID']; ?>">
+                                  <a href="?c=fiador&m=eliminar&id=<?php echo $row[0]; ?>">
                                    <span class="glyphicon glyphicon-trash"></span> Eliminar</a>
                                 </li>
                                  <li>
-                                  <a href="?c=fiador&m=ver&id=<?php echo $row['ID']; ?>">
+                                  <a href="?c=fiador&m=ver&id=<?php echo $row[0]; ?>">
                                    <span class="glyphicon glyphicon-eye-open"></span> ver</a>
                                 </li>
                               </ul>

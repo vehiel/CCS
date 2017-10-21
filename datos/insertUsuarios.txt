@@ -7,15 +7,21 @@ INSERT INTO `ccs02usu` (`IDP_01IN`, `NUS_02IN`, `NIC_02VC`, `CON_02VC`, `IDR_03I
 INSERT INTO `ccs01per` (`IDP_01IN`, `NOM_01VC`, `AP1_01VC`, `AP2_01VC`, `TEL_01VC`, `GEN_01IN`, `EMA_01VC`, `DIR_01VC`, `FNA_01DT`) VALUES ('504080762','Noylin','Aleman','Campos','26262525','0','noylin@gmail.com','Estrada','200-01-26');
 INSERT INTO `ccs02usu` (`IDP_01IN`, `NUS_02IN`, `NIC_02VC`, `CON_02VC`, `IDR_03IN`) VALUES ('504080762', '345', 'usuario345', 'noypass', '1');
 
-CALL SPCCS02INPERUSU(504080764,'penechan','APE1','APE2','87221859',1,'PENE@GMAIL.COM','POR AHI','1990-12-12',987,'PENEPASS',1,1)
+CALL SPCCS02INPERUSU(504080764,'penechan','APE1','APE2','87221859',1,'PENE@GMAIL.COM','POR AHI','1990-12-12',987,'PENEPASS',1,1);
+
+CALL SPCCS02INPERUSU(504080761,"Pablo","Escobar","Avila","8722-1859",1,"pablo@gmail.com","Hojancha","1990-12-13",203,"pablopass",1,1);
+
+CALL SPCCS02INPERUSU(504080765,"Marta","Vergas","Leon","8722-8722",1,"martax@gmail.com","Nicoya","1990-12-13",202,"PASSWORD",1,2);
+
 
 INSERT INTO `ccs03rol` (`IDR_03IN`, `ROL_03VC`) VALUES ('32', 'digitador')
 
 INSERT INTO `ccs03rol` (`IDR_03IN`, `ROL_03VC`) VALUES ('3', 'secretario')
 
-/*AFILIAOS*/
+/*Fiador*/
 
-INSERT INTO `ccs07fia` (`IDP_01IN`, `IDF_07IN`, `EMP_07VC`) VALUES ('504080760', '123', 'NO')
+CALL SPCCS07INPERFIA(504080762,"Pablo","Venega","Avila","8722-1859",1,"pablo@gmail.com","Hojancha","1990-12-13",701,"yo no tranajo, porque las princesas no trabajan");
 
 /*AFILIADO*/
-INSERT INTO `ccs06afi` (`IDP_01IN`, `NAF_06IN`, `NCU_06VC`, `EAC_06IN`, `EMO_06IN`) VALUES ('504080760', '123', '1-200-125-1', '1', '0')
+CALL SPCCS06INPERAFI(504080763,"Juana","Venegas","Avila","8722-1859",0,"adri@gmail.com","por ahi","1990-12-13",600,"1-600-600",0,"suele pagar en especies");
+

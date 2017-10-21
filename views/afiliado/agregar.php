@@ -11,73 +11,74 @@
 	  			<form class="form-horizontal" action="?c=afiliado&m=agregar" method="POST">
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Identificacion</label>
-				        <input class="form-control" name="idp_01in" type="text" required>
+				        <input class="form-control" name="idp_in" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Nombre</label>
-				        <input class="form-control" name="nom_01vc" type="text" required>
+				        <input class="form-control" name="nom_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Primer Apellido</label>
-				        <input class="form-control" name="ap1_01vc" type="text" required>
+				        <input class="form-control" name="ap1_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Segundo Apellido</label>
-				        <input class="form-control" name="ap2_01vc" type="text" required>
+				        <input class="form-control" name="ap2_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Genero</label>
-				        <select class="form-control" name="gen_01in">
+				        <select class="form-control" name="gen_in">
 				        	<option value="1">Masculino</option>
-				        	<option value="2">Femenino</option>
+				        	<option value="0">Femenino</option>
 				        </select> 
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Telefono</label>
-				        <input class="form-control" name="tel_01vc" type="text" required>
+				        <input class="form-control" name="tel_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Correo</label>
-				        <input class="form-control" name="ema_01vc" type="text" required>
+				        <input class="form-control" name="ema_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Direccion</label>
-				        <input class="form-control" name="dir_01vc" type="text" >
+				        <input class="form-control" name="dir_vc" type="text" >
 				    </div>
 				    <div class="form-group">
 				     <label for="inputEmail" class="control-label">Fecha Nacimiento</label>
-				        <input class="form-control" name="fna_01dt" type="date" required>
+				        <input class="form-control" name="fna_dt" type="date" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Numero de Afiliado</label>
-				        <input class="form-control" name="naf_06in" type="number" required>
+				        <input class="form-control" name="naf_in" type="number" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Numero de Cuenta</label>
-				        <input class="form-control" name="ncu_06vc" type="text" required>
+				        <input class="form-control" name="ncu_vc" type="text" required>
 				    </div>
-				    <div class="form-group">
+				    <!-- <div class="form-group">
 				      <label for="inputEmail" class="control-label">Estado Actividad</label>
-				        <select class="form-control" name="eac_06in">
+				        <select class="form-control" name="eac_in">
 				        	<option value="1">Activo</option>
 				        	<option value="0">Inactivo</option>
 				        </select> 
-				    </div>
+				    </div> -->
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Estado Morosidad</label>
-				        <select class="form-control" name="emo_06in">
-				        	<option value="1">Activo</option>
+				        <select class="form-control" name="emo_in">
 				        	<option value="0">Inactivo</option>
+				        	<option value="1">Activo</option>
+				        	
 				        </select> 
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Observaciones</label>
-				        <input class="form-control" name="obs_06vc" type="text" >
+				        <input class="form-control" name="obs_vc" type="text" >
 				    </div>
 
 				    <div class="form-group">
 				    	 <button type="submit" class="btn btn-success">Registrar</button>
-				        <button type="reset" class="btn btn-warning">Borrar</button>
+				        <a href="?c=afiliado" class="btn btn-warning" role="button">Regresar</a>
 				    </div>
 				</form>
 	  		</div>

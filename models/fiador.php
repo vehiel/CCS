@@ -5,8 +5,8 @@ class Fiador extends Persona
 {
 	
 		private $con;
-		protected $idf_07in;
-		protected $emp_07vc;
+		protected $idf_in;
+		protected $emp_vc;
 
 		public function __construct(){
 			$this->con = new Conexion();
@@ -19,53 +19,87 @@ class Fiador extends Persona
 			return $this->$atributo;
 		}
 		public function insertarFiador(){
-			$sql = "INSERT INTO `ccs07fia` (`IDP_01IN`, `IDF_07IN`, `EMP_07VC`) 
-					VALUES ('{$this->idp_01in}', '{$this->idf_07in}', '{$this->emp_07vc}')";
-			$this->con->consultaSimple($sql);
+			// echo "idp_in ".$this->idp_in. "<br>";
+			// 	echo "nom_vc ".$this->nom_vc. "<br>";
+			// 	echo "ap1_vc ".$this->ap1_vc. "<br>";
+			// 	echo "ap2_vc ".$this->ap2_vc. "<br>";
+			// 	echo "tel_vc ".$this->tel_vc. "<br>";
+			// 	echo "gen_in ".$this->gen_in. "<br>";
+			// 	echo "ema_vc ".$this->ema_vc. "<br>";
+			// 	echo "fna_dt ".$this->fna_dt. "<br>";
+			// 	echo "dir_vc ".$this->dir_vc. "<br>";
+			// 	echo "idf_in ".$this->idf_in. "<br>";
+			// 	echo "emp_vc ".$this->emp_vc. "<br>";
+			$statement = $this->con->consultaPreparada("CALL SPCCS07INPERFIA(?,?,?,?,?,?,?,?,?,?,?);");
+			$statement->bind_param("issssisssis",$this->idp_in,$this->nom_vc,$this->ap1_vc,$this->ap2_vc,$this->tel_vc,$this->gen_in,$this->ema_vc,$this->dir_vc,$this->fna_dt,$this->idf_in,$this->ema_vc);
+			
+			$statement->execute();
+			echo $statement->error;
+			$statement->close();
 			$this->con->cerrarConexion();
 		}
-		public function insertarPersona(){
-			$sql = "INSERT INTO ccs01per ( 
-					IDP_01IN,NOM_01VC,AP1_01VC,AP2_01VC,TEL_01VC,GEN_01IN,EMA_01VC,DIR_01VC,FNA_01DT)
-					VALUES ('{$this->idp_01in}', '{$this->nom_01vc}', '{$this->ap1_01vc}', '{$this->ap2_01vc}', '{$this->tel_01vc}', '{$this->gen_01in}', '{$this->ema_01vc}', '{$this->dir_01vc}', '{$this->fna_01dt}'
-					)";
-			 $this->con->consultaSimple($sql);
-
-		}
-
+		// public function insertarPersona(){
+		// 	$sql = "INSERT INTO ccs01per ( 
+		// 			IDP_01IN,NOM_01VC,AP1_01VC,AP2_01VC,TEL_01VC,GEN_01IN,EMA_01VC,DIR_01VC,FNA_01DT)
+		// 			VALUES ('{$this->idp_in}', '{$this->nom_vc}', '{$this->ap1_vc}', '{$this->ap2_vc}', '{$this->tel_vc}', '{$this->gen_in}', '{$this->ema_vc}', '{$this->dir_vc}', '{$this->fna_dt}'
+		// 			)";
+		// 	 $this->con->consultaSimple($sql);
+		//}
 		public function listarFiador(){
-			$sql = "SELECT t1.IDP_01IN as ID,t1.NOM_01VC as Nombre,t1.AP1_01VC as Apellido1,t1.AP2_01VC as Apellido2,t1.TEL_01VC as Telefono,t1.EMA_01VC as Correo, t1.DIR_01VC as Direccion FROM CCS01PER t1 INNER JOIN CCS07FIA t2 on t1.IDP_01IN = t2.IDP_01IN";
+			$sql = "CALL SPCCS07LIPERFIA();";
 			$datos = $this->con->consultaRetorno($sql);
 			return $datos;
 			$this->con->cerrarConexion();
-
 		}
 		public function actualizarFiador(){
-			$sql = "UPDATE CCS07FIA set IDF_07IN='{$this->idf_07in}',EMP_07VC='{$this->emp_07vc}'
-				WHERE IDP_01IN='{$this->idp_01in}'";
-			$this->con->consultaSimple($sql);
-			$this->con->cerrarConexion();
-		}
-		public function actualizarPersona(){
-			$sql = "UPDATE ccs01per set NOM_01VC='{$this->nom_01vc}',AP1_01VC='{$this->ap1_01vc}',AP2_01VC='{$this->ap2_01vc}',TEL_01VC='{$this->tel_01vc}',GEN_01IN='{$this->gen_01in}',EMA_01VC='{$this->ema_01vc}',DIR_01VC='{$this->dir_01vc}',FNA_01DT='{$this->fna_01dt}'WHERE IDP_01IN='{$this->idp_01in}'";
-			$this->con->consultaSimple($sql);
-		}
-		public function eliminarFiador($id){
-			$sql = "DELETE FROM CCS07FIA WHERE IDP_01IN='$id'";
-			$this->con->consultaSimple($sql);
-		}
-		public function eliminarPersona($id){
-			$sql = "DELETE FROM ccs01per WHERE IDP_01IN ='$id'";
-			$this->con->consultaSimple($sql);
-			$this->con->cerrarConexion();
-		}
-		public function buscarFiador($id){
+			$statement = $this->con->consultaPreparada("CALL SPCCS07UPPERFIA(?,?,?,?,?,?,?,?,?,?,?);");
+			$statement->bind_param("issssisssis",$this->idp_in,$this->nom_vc,$this->ap1_vc,$this->ap2_vc,$this->tel_vc,$this->gen_in,$this->ema_vc,$this->dir_vc,$this->fna_dt,$this->idf_in,$this->ema_vc);
 			
-			$sql = "SELECT t1.IDP_01IN as idp_01in,t1.NOM_01VC as nom_01vc ,t1.AP1_01VC as ap1_01vc,t1.AP2_01VC as ap2_01vc,t1.TEL_01VC as tel_01vc,t1.EMA_01VC as ema_01vc, t1.DIR_01VC as dir_01vc, t1.GEN_01IN as gen_01in, t1.FNA_01DT as fna_01dt,t2.IDF_07IN as idf_07vc , t2.EMP_07VC as emp_07vc FROM ccs01per t1 INNER JOIN ccs07fia t2 ON t1.IDP_01IN = t2.IDP_01IN  WHERE t1.IDP_01IN ='$id'";
-			$datos = $this->con->consultaRetorno($sql);
+			$statement->execute();
+			echo $statement->error;
+			$statement->close();
 			$this->con->cerrarConexion();
-			$row = mysqli_fetch_assoc($datos);
+		}
+		// public function actualizarPersona(){
+		// 	$sql = "UPDATE ccs01per set NOM_01VC='{$this->nom_vc}',AP1_01VC='{$this->ap1_vc}',AP2_01VC='{$this->ap2_vc}',TEL_01VC='{$this->tel_vc}',GEN_01IN='{$this->gen_in}',EMA_01VC='{$this->ema_vc}',DIR_01VC='{$this->dir_vc}',FNA_01DT='{$this->fna_dt}'WHERE IDP_01IN='{$this->idp_in}'";
+		// 	$this->con->consultaSimple($sql);
+		// }
+		public function eliminarFiador($id){
+			$null = "NULL";
+			$statement = $this->con->consultaPreparada("CALL SPCCS07DEPERFIA(?,?);");
+			$statement->bind_param("is",$id,$null);
+			$statement->execute();
+			echo $statement->error;
+			$statement->close();
+			$this->con->cerrarConexion();
+		}
+		// public function eliminarPersona($id){
+
+		// 	$sql = "DELETE FROM ccs01per WHERE IDP_01IN ='$id'";
+		// 	$this->con->consultaSimple($sql);
+		// 	$this->con->cerrarConexion();
+		// }
+		public function buscarFiador($m,$id){
+			if ($m=="editar") {
+				$statement = $this->con->consultaPreparada("CALL SPCCS07SECEPERFIA(?);");
+				$statement->bind_param("i",$id);
+				echo "en editar Fiador";
+			}else {
+				$null = 'NULL';
+				$statement = $this->con->consultaPreparada("CALL SPCCS07SEPERFIA(?,?);");
+				$statement->bind_param("is",$id,$null);
+				echo "en else FIADOR";
+			}
+			$statement->execute();
+			if(!($resultado = $statement->get_result()))
+			{echo "<b>No  se obtuvieron los datos</b><br>  (" . $statement->errno . ") " . $statement->error;
+			}
+
+			$statement->close();
+			$this->con->cerrarConexion();
+			$row = mysqli_fetch_array($resultado);
 			return $row;
+			//var_dump($row);
 			
 		}
 }

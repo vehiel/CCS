@@ -1,4 +1,4 @@
- <!-- <!DOCTYPE html>
+﻿ <!-- <!DOCTYPE html>
  <html>
  <head>
  	<title>Agregar Usuario</title>
@@ -18,57 +18,57 @@
 	  			<form class="form-horizontal" action="?c=usuario&m=agregar" method="POST">
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Identificacion</label>
-				        <input class="form-control" name="idp_01in" type="text" required>
+				        <input class="form-control" name="idp_in" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Nombre</label>
-				        <input class="form-control" name="nom_01vc" type="text" required>
+				        <input class="form-control" name="nom_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Primer Apellido</label>
-				        <input class="form-control" name="ap1_01vc" type="text" required>
+				        <input class="form-control" name="ap1_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Segundo Apellido</label>
-				        <input class="form-control" name="ap2_01vc" type="text" required>
+				        <input class="form-control" name="ap2_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Genero</label>
-				        <select class="form-control" name="gen_01in">
+				        <select class="form-control" name="gen_in">
 				        	<option value="1">Masculino</option>
-				        	<option value="2">Femenino</option>
+				        	<option value="0">Femenino</option>
 				        </select> 
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Telefono</label>
-				        <input class="form-control" name="tel_01vc" type="text" required>
+				        <input class="form-control" name="tel_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Correo</label>
-				        <input class="form-control" name="ema_01vc" type="text" required>
+				        <input class="form-control" name="ema_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Direccion</label>
-				        <input class="form-control" name="dir_01vc" type="" required>
+				        <input class="form-control" name="dir_vc" type="" required>
 				    </div>
 				     <div class="form-group">
 				      <label for="inputEmail" class="control-label">Fecha Nacimiento</label>
-				        <input class="form-control" name="fna_01dt" type="date" required>
+				        <input class="form-control" name="fna_dt" type="date" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Numero Usuario</label>
-				        <input class="form-control" name="nus_02in" type="number" required>
+				        <input class="form-control" name="nus_in" type="number" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Contraseña</label>
-				        <input class="form-control" name="con_02vc" type="text" required>
+				        <input class="form-control" name="con_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Rol de Usuario</label>
 				      <!-- asi se cargar un dropdown list desde la base de datos -->
-				      <select name="idr_03in" class="form-control">
+				      <select name="idr_in" class="form-control">
 				      	<?php while ($row = mysqli_fetch_array($rs)) { ?>
-				        	<option value="<?php echo $row['IDR_03IN'] ?>"><?php echo $row['ROL_03VC'] ?></option>
+				        	<option value="<?php echo $row['idr_03in'] ?>"><?php echo $row['rol_03vc'] ?></option>
 				        <?php } ?>
 				      </select>
 				    </div>
@@ -78,8 +78,8 @@
 				      < se usa type= file para archivos >
 				    </div> -->
 				    <div class="form-group">
-				    	 <button type="submit" class="btn btn-success">Registrar</button>
-				        <button type="reset" class="btn btn-warning">Borrar</button>
+				    	<button type="submit" class="btn btn-success">Registrar</button>
+				        <a href="?c=usuario" class="btn btn-warning" role="button">Regresar</a>
 				    </div>
 				</form>
 	  		</div>

@@ -7,48 +7,41 @@
 				<?php if ($rs->num_rows) { ?>
 				<thead>
 					<tr>
-	                    <th>Cédula</th>
-					     <th>Nombre</th>
-					     <th>Telefono</th>
-					     <th>Genero</th>
-					     <th>Email</th>
-					     <th>Direccion</th>
-					     <th>Fecha de Nacimiento</th>
-					     <th>Codigo Usuario</th>
-					     <!-- <th>Contrasenna</th> -->
-					     <th>Codigo de Rol</th>
-	                    <th style="width: 120px;">Más</th>
-                	</tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Genero</th>
+            <th>Email</th>
+            <th>Direccion</th>
+            <!-- <th>Fecha de Nacimiento</th> -->
+            <th>Codigo Usuario</th>
+            <!-- <th>Contrasenna</th> -->
+            <th>Codigo de Rol</th>
+            <th style="width: 120px;">Más</th>
+          </tr>
 				</thead>
-				 <!-- <tfoot>
+				 <tfoot>
                   <tr>
-                    <th>Cédula</th>
+                  <th>Cédula</th>
 	                <th>Nombre</th>
 	                <th>Primer Apellido</th>
 	                <th>Segundo Apellido</th>
 	                <th>Telefono</th>
 	                <th>Correo</th>
 	                <th>Direccion</th>
-                   	<th style="width: 120px;">Más</th>
+                  <th style="width: 120px;">Más</th>
                   </tr>
-                </tfoot> -->
+        </tfoot>
                 <tbody>
                 	 <?php while ($row = mysqli_fetch_array($rs)):?>
                         <tr>
-                		 <!--  <td><?php echo $row['ID']; ?></td>
-                          <td><?php echo $row['Nombre']; ?></td>
-                          <td><?php echo $row['Apellido1']; ?></td>
-                          <td><?php echo $row['Apellido2']; ?></td>
-                          <td><?php echo $row['Telefono']; ?></td>
-                          <td><?php echo $row['Correo']; ?></td>
-                          <td><?php echo $row['Direccion']; ?></td> -->
-                          <td><?php echo $row[0]; ?></td>
+                		    <td><a href="?c=usuario&m=ver&id=<?php echo $row[0]; ?>"><?php echo $row[0];?></a></td>
                           <td><?php echo $row[1]; ?></td>
                           <td><?php echo $row[2]; ?></td>
                           <td><?php echo $row[3]; ?></td>
                           <td><?php echo $row[4]; ?></td>
                           <td><?php echo $row[5]; ?></td>
-                          <td><?php echo $row[6]; ?></td>
+                          <!-- <td><?php echo $row[6]; ?></td> -->
                           <td><?php echo $row[7]; ?></td>
                           <td><?php echo $row[8]; ?></td>
                           <!-- <td><?php echo $row[9]; ?></td> -->

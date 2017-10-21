@@ -18,7 +18,7 @@
 		public function index(){
 			$rs = $this->inv->listarInversion(); 
 			$info = $this->fetchFields($rs);
-			$rs->free;
+			// var_dump($info);
 			require_once "views/header.php";
 			require_once "views/inversion/index.php";
 			require_once "views/footer.php";

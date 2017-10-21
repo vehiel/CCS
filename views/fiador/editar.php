@@ -2,7 +2,7 @@
 <h3 class="titulo">Editar Fiador<hr></h3>
 	<div class="panel panel-success">
 	  <div class="panel-heading">
-	    <h3 class="panel-title"><b>Editando a:</b> <?php echo $datos['nom_01vc'] ." ".$datos['ap1_01vc'] ." ".$datos['ap2_01vc']; ?></h3>
+	    <h3 class="panel-title"><b>Editando a:</b> <?php echo $datos['Nombre'] ." ".$datos['Apellido1'] ." ".$datos['Apellido2']; ?></h3>
 	  </div>
 	  <div class="panel-body">
 	  	<div class="row">
@@ -12,55 +12,54 @@
 				    <div class="form-group">
 				      <ul class="list-group">
 				      	<li class="list-group-item"> 
-				      		<b>Identificacion: </b><?php echo $datos['idp_01in']; ?>
+				      		<b>Identificacion: </b><?php echo $datos['Cedula']; ?>
+				      	</li>
+				      	<br>
+				      	<li class="list-group-item"> 
+				      		<b>Numero de Fiador: </b><?php echo $datos['Id_Fiador']; ?>
 				      	</li>
 				      </ul>
-				        <input value="<?php echo $datos['idp_01in']; ?>" class="form-control" name="idp_01in" type="hidden" required>
+				        <input value="<?php echo $datos['Cedula']; ?>" class="form-control" name="idp_in" type="hidden" required>
+				          <input value="<?php echo $datos['Id_Fiador']; ?>" class="form-control" name="idf_in" type="hidden" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Nombre</label>
-				        <input value="<?php echo $datos['nom_01vc']; ?>" class="form-control" name="nom_01vc" type="text" required>
+				        <input value="<?php echo $datos['Nombre']; ?>" class="form-control" name="nom_vc" type="text" required>
 				    </div>
 				      <div class="form-group">
 				      <label for="inputEmail" class="control-label">Primer Apellido</label>
-				        <input value="<?php echo $datos['ap1_01vc']; ?>" class="form-control" name="ap1_01vc" type="text" required>
+				        <input value="<?php echo $datos['Apellido1']; ?>" class="form-control" name="ap1_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Segundo Apellido</label>
-				        <input value="<?php echo $datos['ap2_01vc']; ?>" class="form-control" name="ap2_01vc" type="text" required>
+				        <input value="<?php echo $datos['Apellido2']; ?>" class="form-control" name="ap2_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Genero</label>
-				        <select class="form-control" name="gen_01in">
-				        	<option value="<?php echo $datos['gen_01in']; ?>">Sin Cambios</option>
-				        	<option value="1">Masculino</option>
-				        	<option value="2">Femenino</option>
+				        <select class="form-control" name="gen_in">
+				        	<option value="1" <?php echo $datos['Genero'] ==1? "selected": "";?>>Masculino</option>
+				        	<option value="0"<?php echo $datos['Genero'] ==0? "selected": ""; ?>>Femenino</option>
 				        </select> 
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Telefono</label>
-				        <input value="<?php echo $datos['tel_01vc']; ?>" class="form-control" name="tel_01vc" type="text" required>
+				        <input value="<?php echo $datos['Telefono']; ?>" class="form-control" name="tel_vc" type="text" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Correo</label>
-				        <input value="<?php echo $datos['ema_01vc']; ?>" class="form-control" name="ema_01vc" type="text" required>
+				        <input value="<?php echo $datos['Email']; ?>" class="form-control" name="ema_vc" type="text" required>
 				    </div>
 		  		    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Direccion</label>
-				        <input value="<?php echo $datos['dir_01vc']; ?>" class="form-control" name="dir_01vc" type="text" required>
+				        <input value="<?php echo $datos['Direccion']; ?>" class="form-control" name="dir_vc" type="text" required>
 				    </div>
 				     <div class="form-group">
 				      <label for="inputEmail" class="control-label">Fecha Nacimiento</label>
-				        <input value="<?php echo $datos['fna_01dt']; ?>" class="form-control" name="fna_01dt" type="date" required>
+				        <input value="<?php echo $datos['Fecha_Nac']; ?>" class="form-control" name="fna_dt" type="date" required>
 				    </div>
 				    <div class="form-group">
-				      <label for="inputEmail" class="control-label">ID Fiador</label>
-				        <input value="<?php echo $datos['idf_07vc']; ?>" class="form-control" name="idf_07in" type="number" required>
-				    </div>
-				    
-				   	<div class="form-group">
 				      <label for="inputEmail" class="control-label">Empleo</label>
-				        <input value="<?php echo $datos['emp_07vc']; ?>" class="form-control" name="emp_07vc" type="text" required>
+				        <input value="<?php echo $datos['Empleo']; ?>" class="form-control" name="emp_vc" type="text" required>
 				    </div>
 				  	<div class="form-group">
 				    	 <button type="submit" class="btn btn-success">Guardar</button>

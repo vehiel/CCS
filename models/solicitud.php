@@ -36,10 +36,10 @@ class Solicitud
 			// echo "fap_dt: ".$this->fap_dt."<br>";
 			// echo "est_in: ".$this->est_in."<br>";
 			// echo "mca_fl: ".$this->mca_fl."<br>";
-			
 			$statement = $this->con->consultaPreparada("CALL SPCCS10INSOL(?,?,?,?,?,?,?,?,?);");
 			$statement->bind_param("iiiisssid",$this->nso_in,$this->naf_in,$this->idi_in,$this->cga_in,$this->fso_dt,$this->fre_dt,$this->fap_dt,$this->est_in,$this->mca_fl);
 			$statement->execute();
+			echo $statement->error;
 			$statement->close();
 			$this->con->cerrarConexion();
 		}
@@ -64,7 +64,6 @@ class Solicitud
 
 		}
 		
-		
 		public function eliminarSolicitud($id){
 			$statement = $this->con->consultaPreparada("CALL SPCCS10DESOL(?);");
 			$statement->bind_param("i",$id);
@@ -72,24 +71,33 @@ class Solicitud
 			$statement->close();
 			$this->con->cerrarConexion();
 		}
-		public function buscarSolicitud($id){
-			$null = '';
-			$statement = $this->con->consultaPreparada("SELECT * FROM ccs10sol where NSO_10IN = '$id'");
-			// $statement->bind_param("i",$id);
+		public function buscarSolicitud($m,$idSol){
+			if ($m=="editar")
+			{
+				$statement = $this->con->consultaPreparada("CALL SPCCS10SENSSOL(?);");
+				$statement->bind_param("i",$idSol);
+			}
+			else{
+				$null = "NULL";
+				$statement = $this->con->consultaPreparada("CALL SPCCS10SESOL(?,?,?,?);");
+				$statement->bind_param("ssis",$null,$null,$idSol,$Afi);
+			}
 			$statement->execute();
 			if(!($resultado = $statement->get_result())){
-				echo("<b>No obtuvieron los datos</b><br>");
+				echo("<b>No  se obtuvieron los datos</b><br>"."(" . $statement->errno . ") " . $statement->error);
 			}
 			$statement->close();
 			$this->con->cerrarConexion();
 			$row = mysqli_fetch_array($resultado);
+			//var_dump($row);
 			return $row;
 		}
 		public function aprovarSolicitud(){
-			$null = '1';
-			$statement = $this->con->consultaPreparada("CALL SPCCS10UPAPSOL(?,?,?);");
-			 $statement->bind_param("iis",$this->nso_in,$null,$this->fap_dt);
+			$null = "NULL";
+			$statement = $this->con->consultaPreparada("CALL SPCCS10UPAPSOL(?,?);");
+			 $statement->bind_param("is",$this->nso_in,$null);
 			$statement->execute();
+			echo "(" . $statement->errno . ") " . $statement->error;
 			$statement->close();
 			$this->con->cerrarConexion();
 		}
