@@ -12,14 +12,11 @@
               <b>Identificacion: </b><?php echo $datos[0]; ?>
             </li>
             <li class="list-group-item">
-              <b>Nombre: </b><?php echo $datos['Nombre']; ?>
-            </li>
-           <!--  <li class="list-group-item">
-              <b>Primer Apellido: </b><?php echo $datos['ap1_vc']; ?>
+              <b>Numero Afiliado: </b><?php echo $datos[7]; ?>
             </li>
             <li class="list-group-item">
-              <b>Segundo Apellido: </b><?php echo $datos['ap2_vc']; ?>
-            </li> -->
+              <b>Nombre: </b><?php echo $datos['Nombre']; ?>
+            </li>
             <li class="list-group-item">
               <b>Telefono: </b><?php echo $datos[2]; ?>
             </li>
@@ -34,9 +31,6 @@
             </li>
             <li class="list-group-item">
               <b>Fecha Nacimiento: </b><?php echo $datos['Fecha de Nacimiento']; ?>
-            </li>
-            <li class="list-group-item">
-              <b>Numero Afiliado: </b><?php echo $datos[7]; ?>
             </li>
             <li class="list-group-item">
               <b>Numero de Cuenta: </b><?php echo $datos[8]; ?>

@@ -36,8 +36,8 @@ class Solicitud
 			// echo "fap_dt: ".$this->fap_dt."<br>";
 			// echo "est_in: ".$this->est_in."<br>";
 			// echo "mca_fl: ".$this->mca_fl."<br>";
-			$statement = $this->con->consultaPreparada("CALL SPCCS10INSOL(?,?,?,?,?,?,?,?,?);");
-			$statement->bind_param("iiiisssid",$this->nso_in,$this->naf_in,$this->idi_in,$this->cga_in,$this->fso_dt,$this->fre_dt,$this->fap_dt,$this->est_in,$this->mca_fl);
+			$statement = $this->con->consultaPreparada("CALL SPCCS10INSOL(?,?,?,?,?,?);");
+			$statement->bind_param("iiiiid",$this->nso_in,$this->naf_in,$this->idi_in,$this->cga_in,$this->est_in,$this->mca_fl);
 			$statement->execute();
 			echo $statement->error;
 			$statement->close();
@@ -77,10 +77,10 @@ class Solicitud
 				$statement = $this->con->consultaPreparada("CALL SPCCS10SENSSOL(?);");
 				$statement->bind_param("i",$idSol);
 			}
-			else{
+			else if($m=="ver"){
 				$null = "NULL";
 				$statement = $this->con->consultaPreparada("CALL SPCCS10SESOL(?,?,?,?);");
-				$statement->bind_param("ssis",$null,$null,$idSol,$Afi);
+				$statement->bind_param("ssis",$null,$null,$idSol,$null);
 			}
 			$statement->execute();
 			if(!($resultado = $statement->get_result())){

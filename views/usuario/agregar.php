@@ -1,12 +1,4 @@
-﻿ <!-- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Agregar Usuario</title>
- 	<link rel="stylesheet" type="text/css" href="libs/css/bootstrap.min.css">
- </head>
- <body> -->
- 	<div class="container">
-	<!-- <h3 class="titulo">Agregar Persona<hr></h3> -->
+﻿ 	<div class="container">
 	<div class="panel panel-success">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Agregar Usuario</h3>
@@ -72,11 +64,6 @@
 				        <?php } ?>
 				      </select>
 				    </div>
-				   <!--  <div class="form-group">
-				      <label for="inputEmail" class="control-label">Imagen</label>
-				        <input class="form-control" name="imagen" id="imagen" type="file" required>
-				      < se usa type= file para archivos >
-				    </div> -->
 				    <div class="form-group">
 				    	<button type="submit" class="btn btn-success">Registrar</button>
 				        <a href="?c=usuario" class="btn btn-warning" role="button">Regresar</a>
@@ -88,6 +75,5 @@
 	  </div>
 	</div>
 </div>
- 
-<!--  </body>
- </html> -->
+<script src="libs/js/jquery-1.12.4.js"></script>
+<script src="libs/js/bootstrap.min.js"></script>

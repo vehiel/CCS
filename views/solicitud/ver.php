@@ -17,25 +17,25 @@
               <b>Afiliado: </b><?php echo $sol[1]; ?>
             </li>
             <li class="list-group-item">
-              <b>Inversion: </b><?php echo $sol[2]; ?>
+              <b>Fecha de Solicitud: </b><?php echo $sol[2]; ?>
             </li>
             <li class="list-group-item">
-              <b>Tipo de Garantia: </b><?php echo $sol[3]; ?>
+              <b>Fecha de Revision: </b><?php echo $sol[3]; ?>
             </li>
             <li class="list-group-item">
-              <b>Fecha de Solicitud: </b><?php echo $sol[4]; ?>
+              <b>Fecha de Aprovacion: </b><?php echo $sol[4]; ?>
             </li>
             <li class="list-group-item">
-              <b>Fecha de Revision: </b><?php echo $sol[5]; ?>
+              <b>Estado: </b><?php echo $sol[5]; ?>
             </li>
             <li class="list-group-item">
-              <b>Fecha de Aprovacion: </b><?php echo $sol[6]; ?>
+              <b>Inversion: </b><?php echo $sol[6]; ?>
             </li>
             <li class="list-group-item">
-              <b>Estado: </b><?php echo $sol[7]; ?>
+              <b>Tipo de Garantia: </b><?php echo $sol[8]; ?>
             </li>
             <li class="list-group-item">
-              <b>Monto Capital: </b><?php echo $sol[8]; ?>
+              <b>Monto Capital: </b><?php echo $sol[7]; ?>
             </li>
           </ul>
         </div>

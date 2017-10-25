@@ -23,9 +23,10 @@ else
     call_user_func( array( $controller, $metodo ) );
 }
 
-// require_once "models/solicitud.php";
+// require_once "models/afiliado.php";
 
-// $usuario = new Solicitud();
+// $usuario = new Afiliado();
+// echo "<table><thead><tr><th>Cedula</th><th>Nombre</th><th>NAF</th></tr></thead><tbody>".$usuario->buscarAfiliado("afiSol","504080760")."</tbody></table>";
 
 // $hoy= getdate();
 // $fecha = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];

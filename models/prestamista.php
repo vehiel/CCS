@@ -1,13 +1,12 @@
 <?php 
 require_once "conexion.php";
-class Inversion{
+class Prestamista{
 		private $con;
 						//se cambio por private
-		private $idi_in;
-		private $inv_vc;
-		private $des_vc;
-		private $mma_fl;
-		private $mmi_fl;
+		private $cpr_in;
+		private $nom_vc;
+		private $ian_fl;
+		private $pmo_fl;
 
 		public function __construct(){
 			$this->con = new Conexion();
@@ -17,17 +16,17 @@ class Inversion{
 			$this->$atributo = $contenido;
 		}
 		
-		public function insertarInversion(){
-			$statement = $this->con->consultaPreparada("CALL SPCCS08ININV(?,?,?,?,?);");
-			$statement->bind_param("issdd",$this->idi_in,$this->inv_vc,$this->des_vc,$this->mma_fl,$this->mmi_fl);
+		public function insertarPrestamista(){
+			$statement = $this->con->consultaPreparada("CALL SPCCS15INPRE(?,?,?,?);");
+			$statement->bind_param("isdd",$this->cpr_in,$this->nom_vc,$this->ian_fl,$this->pmo_fl);
 			$statement->execute();
 			echo $statement->error;
 			$statement->close();
 			$this->con->cerrarConexion();
 		}
 		
-		public function listarInversion(){
-			$statement = $this->con->consultaPreparada("CALL SPCCS08LIINV();");
+		public function listarPrestamista(){
+			$statement = $this->con->consultaPreparada("CALL SPCCS15LIPRE();");
 			$statement->execute();
 			if(!($resultado= $statement->get_result())){
 				echo("<b>No obtuvieron los datos</b><br>".$statement->error);
@@ -36,25 +35,23 @@ class Inversion{
 			$this->con->cerrarConexion();
 			return $resultado;
 		}
-		public function actualizarInversion(){
-			$statement = $this->con->consultaPreparada("CALL SPCCS08UPINV(?,?,?,?,?);");
-			$statement->bind_param("issdd",$this->idi_in,$this->inv_vc,$this->des_vc,$this->mma_fl,$this->mmi_fl);
+		public function actualizarPrestamista(){
+			$statement = $this->con->consultaPreparada("CALL SPCCS15UPPRE(?,?,?,?);");
+			$statement->bind_param("isdd",$this->cpr_in,$this->nom_vc,$this->ian_fl,$this->pmo_fl);
 			$statement->execute();
-			echo $statement->error;
 			$statement->close();
 			$this->con->cerrarConexion();
 		}
-		public function eliminarInsersion($id){
-			$statement = $this->con->consultaPreparada("CALL SPCCS08DEINV(?);");
+		public function eliminarPrestamista($id){
+			$statement = $this->con->consultaPreparada("CALL SPCCS15DEPRE(?);");
 			$statement->bind_param("i",$id);
 			$statement->execute();
-			echo $statement->error;
 			$statement->close();
 			$this->con->cerrarConexion();
 			
 		}
-		public function buscarInversion($id){
-			$statement = $this->con->consultaPreparada("CALL SPCCS08SEINV(?);");
+		public function buscarPrestamista($id){
+			$statement = $this->con->consultaPreparada("CALL SPCCS15SEPRE(?);");
 			$statement->bind_param("i",$id);
 			$statement->execute();
 			if(!($resultado = $statement->get_result())){

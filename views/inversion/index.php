@@ -1,42 +1,39 @@
 	<div class="container">
 		<h2>Inversiones</h2>
 		<a href="?c=inversion&m=agregar" class="btn btn-default" role="button">Agregar Inversion</a>
-		<div class="row">
-			<div class="col-md-12">
+		<div class="table-responsive">
+			<!-- <div class="col-md-12"> -->
 				<table id="example" class="display" cellspacing="0" width="100%">
 				<?php if ($rs->num_rows) { ?>
 				<thead>
 					<tr>
-	                   <!--  <th>Cédula</th>
-	                    <th>Nombre</th>
-	                    <th>Primer Apellido</th>
-	                    <th>Segundo Apellido</th>
-	                    <th>Telefono</th>
-	                    <th>Correo</th>
-	                    <th>Direccion</th> -->
-                      <?php  
+	                    <th>Código de Inversión</th>
+	                    <th>Inversión</th>
+	                    <th>Destino de la Inversión</th>
+	                    <th>Monto Máximo</th>
+	                    <th>Monto Mínimo</th>
+	                   
+                   <!--    <?php  
                        foreach ($info as $valor) {?>
                         <th><?php echo $valor->name ?></th>
                         
-                    <?php   }?>
-	                   <th style="width: 120px;">Más</th>
+                    <?php   }?> -->
+	                   <th style="width: 120px;"></th>
           </tr>
 				</thead>
 				<tfoot>
                     <tr>
-                     <!--  <th>Cédula</th>
-                      <th>Nombre</th>
-                      <th>Primer Apellido</th>
-                      <th>Segundo Apellido</th>
-                      <th>Telefono</th>
-                      <th>Correo</th>
-                      <th>Direccion</th> -->
-                      <?php  
+                     <th>Código de Inversión</th>
+                      <th>Inversión</th>
+                      <th>Destino de la Inversión</th>
+                      <th>Monto Máximo</th>
+                      <th>Monto Mínimo</th>
+                      <!-- <?php  
                        foreach ($info as $valor) {?>
                         <th><?php echo $valor->name ?></th>
                         
-                    <?php   }?>
-                     <th style="width: 120px;">Más</th>
+                    <?php   }?> -->
+                     <th style="width: 120px;"></th>
           </tr>
          </tfoot>
                 <tbody>
@@ -79,7 +76,7 @@
 		            </div>
 				<?php } ?>
 			</table>
-		  </div>
+		  <!-- </div> -->
 		</div>
 	</div>
 <script  src="libs/js/jquery-1.12.4.js"></script>

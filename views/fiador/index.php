@@ -1,8 +1,8 @@
 	<div class="container">
 		<h2>Fiadores</h2>
 		<a href="?c=fiador&m=agregar" class="btn btn-default" role="button">Agregar Fiador</a>
-		<div class="row">
-			<div class="col-md-12">
+		<div class="table-responsive">
+			<!-- <div class="col-md-12"> -->
 				<table id="example" class="display" cellspacing="0" width="100%">
 				<?php if ($datos->num_rows) { ?>
 				<thead>
@@ -77,7 +77,7 @@
 		            </div>
 				<?php } ?>
 			</table>
-		  </div>
+		  <!-- </div> -->
 		</div>
 	</div>
 <script  src="libs/js/jquery-1.12.4.js"></script>

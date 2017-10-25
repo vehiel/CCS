@@ -24,7 +24,7 @@
 		public function index(){
 			$rs = $this->solicitud->listarSolicitud();
 			$info = $this->fetchFields($rs);
-			$rs->free; 
+			//$rs->free; 
 			require_once "views/header.php";
 			require_once "views/solicitud/index.php";
 			require_once "views/footer.php";
@@ -46,14 +46,14 @@
 				$this->solicitud->set("naf_in",$_POST['naf_in']);
 				$this->solicitud->set("idi_in",$_POST['idi_in']);
 				$this->solicitud->set("cga_in",$_POST['cga_in']);
-				$this->solicitud->set("fso_dt",$fecha);
-				$this->solicitud->set("fre_dt",$null);
-				$this->solicitud->set("fap_dt",$null);
+				// $this->solicitud->set("fso_dt",$fecha);
+				// $this->solicitud->set("fre_dt",$null);
+				// $this->solicitud->set("fap_dt",$null);
 				$this->solicitud->set("est_in",'0');
 				$this->solicitud->set("mca_fl",$_POST['mca_fl']);
 				$this->solicitud->insertarSolicitud();
 
-				header('location:?c=solicitud&m=index');
+				//header('location:?c=solicitud&m=index');
 			}
 		}
 		public function editar(){
@@ -121,6 +121,15 @@
 		public function cancelar(){
 			echo "PROXIMENTE <br> ";
 
+		}
+		public function obtenerAfiliado(){
+			$this->afiliado->buscarAfiliado("afiSol",$_GET["buscar"]);
+			//$nombre = $nombre;
+			//consol.log($_POST["vehiel"]);
+			// $this->afiliado->vehiel($_GET["buscar"]);
+		}
+		public function obtenerFiador(){
+			$this->fiador->buscarFiador("fiaSol",$_GET["buscar"]);
 		}
 	}
  ?>
