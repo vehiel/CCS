@@ -37,7 +37,7 @@
 			$statement->bind_param("i",$rol);
 			$statement->execute();
 			if(!($resultado = $statement->get_result()))
-			{echo("<b>No  se obtuvieron los datos</b><br>");}
+			{echo("<b>No  se obtuvieron los datos de rol</b><br>");}
 			$statement->close();
 			$this->con->cerrarConexion();
 			// while ($row = mysqli_fetch_array($resultado)) {

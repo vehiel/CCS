@@ -54,10 +54,13 @@
               <li>
                 <a href="?c=afiliado&m=inactivarAfi&id=<?php echo $datos[0]; ?>" data-toggle="modal">Inactivar</a>
               </li>
-              
+              <li>
+                <a href="?c=solicitud&m=agregar&id_afi=<?php echo $datos[0]; ?>" data-toggle="modal">Agregar Solicitud</a>
+              </li>
           </ul>
         </div>
         <div class="form-group">
+          <!-- <button class="btn btn-default" onclick="btn_regresar()">Regresar</button> -->
              <a href="?c=afiliado" class="btn btn-default" role="button">Regresar</a>
         </div>
       </div>

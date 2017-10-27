@@ -16,6 +16,7 @@
 			require_once "views/afiliado/index.php";
 			require_once "views/footer.php";
 		}
+
 		public function agregar(){
 			if(!$_POST){
 				
@@ -78,6 +79,8 @@
 		}
 		public function ver(){
 			$datos = $this->afiliado->buscarAfiliado("ver",$_REQUEST['id']);
+			//var_dump($datos);
+			//echo "algo en controlador afiliado";
 			require_once "views/header.php";
 			require_once 'views/afiliado/ver.php';
 			require_once "views/footer.php";

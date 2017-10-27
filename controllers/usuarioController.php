@@ -10,7 +10,7 @@
 			$this->rol = new Rol();
 		}
 
-		public function index(){
+		public function index(){ 
 			$pri = $this->rol->buscarPrivilegios();
 			$rs = $this->usuario->listarUsuario();
 			require_once "views/header.php";
@@ -85,14 +85,11 @@
 			header('location:?c=usuario');
 		}
 		public function ver(){
-			$datos = $this->usuario->buscarUsuario("ver",$_REQUEST['id']);
-
-			$rol = $this->rol->buscarRol($datos['rol']);
-			//print_r($rol);
-
-			require_once "views/header.php";
-			require_once 'views/usuario/ver.php';
-			require_once "views/footer.php";
+			$this->usuario->buscarUsuario("ver",$_REQUEST['id']);
+			//$datos = $this->usuario->buscarUsuario("ver",$_REQUEST['id']);
+			// require_once "views/header.php";
+			// require_once 'views/usuario/ver.php';
+			// require_once "views/footer.php";
 		}
 		public function editarCon(){
 			//echo "idp ".$_POST['idp_in']." <br>";

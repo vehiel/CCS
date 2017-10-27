@@ -31,7 +31,7 @@ class Fiador extends Persona
 			// 	echo "idf_in ".$this->idf_in. "<br>";
 			// 	echo "emp_vc ".$this->emp_vc. "<br>";
 		$statement = $this->con->consultaPreparada("CALL SPCCS07INPERFIA(?,?,?,?,?,?,?,?,?,?,?);");
-		$statement->bind_param("issssisssis",$this->idp_in,$this->nom_vc,$this->ap1_vc,$this->ap2_vc,$this->tel_vc,$this->gen_in,$this->ema_vc,$this->dir_vc,$this->fna_dt,$this->idf_in,$this->ema_vc);
+		$statement->bind_param("issssisssis",$this->idp_in,$this->nom_vc,$this->ap1_vc,$this->ap2_vc,$this->tel_vc,$this->gen_in,$this->ema_vc,$this->dir_vc,$this->fna_dt,$this->idf_in,$this->emp_vc);
 		
 		$statement->execute();
 		echo $statement->error;
@@ -39,10 +39,20 @@ class Fiador extends Persona
 		$this->con->cerrarConexion();
 	}
 	
+	// public function listarFiador(){
+	// 	$sql = "CALL SPCCS07LIPERFIA();";
+	// 	$datos = $this->con->consultaRetorno($sql);
+	// 	return $datos;
+	// 	$this->con->cerrarConexion();
+	// }
 	public function listarFiador(){
-		$sql = "CALL SPCCS07LIPERFIA();";
-		$datos = $this->con->consultaRetorno($sql);
-		return $datos;
+		$statement = $this->con->consultaPreparada("CALL SPCCS07LIPERFIA();");
+		$statement->execute();
+		if (!($resultado = $statement->get_result())) {
+			echo "(" . $statement->errno . ") " . $statement->error;
+		}
+		return $resultado;
+		$statement->close();
 		$this->con->cerrarConexion();
 	}
 	public function actualizarFiador(){
@@ -65,26 +75,57 @@ class Fiador extends Persona
 		$this->con->cerrarConexion();
 	}
 	
-	public function buscarFiador($m,$id){
+	public function buscarFiador($m,$valor){
+		$fiaSol=false;
 		if ($m=="editar") {
 			$statement = $this->con->consultaPreparada("CALL SPCCS07SECEPERFIA(?);");
-			$statement->bind_param("i",$id);
-			echo "en editar Fiador";
-		}else {
+			$statement->bind_param("i",$valor);
+			
+		}else if($m=="ver"){
 			$null = 'NULL';
-			$statement = $this->con->consultaPreparada("CALL SPCCS07SEPERFIA(?,?);");
-			$statement->bind_param("is",$id,$null);
-			echo "en else FIADOR";
+			$statement = $this->con->consultaPreparada("CALL SPCCS07SEPERFIA(?,?,?);");
+			$statement->bind_param("iss",$valor,$null,$null);
+			
+		}else if($m=="fiaSol"){
+			$fiaSol = true;
+			//$Data = true;
+			$statement = $this->con->consultaPreparada("CALL SPCCS07SEPERFIA(?,?,?);");
+			$statement->bind_param("sss",$valor,$valor,$valor);
+
 		}
 		$statement->execute();
-		if(!($resultado = $statement->get_result()))
-			{echo "<b>No  se obtuvieron los datos</b><br>  (" . $statement->errno . ") " . $statement->error;
-	}
+		if(!($resultado = $statement->get_result())){
+			echo "<b>No  se obtuvieron los datos</b><br>  (" . $statement->errno . ") " . $statement->error;
+		}
+		$statement->close();
+		$this->con->cerrarConexion();
+		if ($fiaSol){
+			$hint ="";
+			while ($row = mysqli_fetch_array($resultado)) {
+				$hint .= '<tr>
+				<td>'.$row[0].'</td>
+				<td>'.$row[1].'</td>
+				<td>'.$row[7].'</td>
+				</tr>';
+			}
+			
+			
+			if ($hint=="") {
+				$response='<tr>
+				<td>'."sin coincidencias".'</td>
+				<td>'."sin coincidencias".'</td>
+				<td>'."sin coincidencias".'</td>
+				</tr>';
+								  // $response="no suggestion";
+			} else {
+				$response=$hint;
+			}
 
-	$statement->close();
-	$this->con->cerrarConexion();
-	$row = mysqli_fetch_array($resultado);
-	return $row;
-}
+			echo $response;
+		}else{
+		$row = mysqli_fetch_array($resultado);
+		return $row;
+		}
+	}
 }
 ?>

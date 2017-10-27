@@ -10,7 +10,6 @@
           <ul class="list-group">
             <li class="list-group-item">
               <b>Identificacion: </b><?php echo $datos[0]; ?>
-
             </li>
             <li class="list-group-item">
               <b>Numero Usuario: </b><?php echo $datos[7]; ?>
@@ -58,7 +57,7 @@
 </div>
 <!-- <a data-toggle="modal" href="#myModal">Open Modal</a> -->
 
-<div class=" modal- fade" id="recuperarCon" role="dialog">
+<div class=" modal fade" id="recuperarCon" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="padding:35px 50px;">

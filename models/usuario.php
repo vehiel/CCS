@@ -71,12 +71,14 @@ class Usuario extends Persona
 			
 		}
 		public function buscarUsuario($m,$id){
+			$verModal = false;
 			if ($m=="editar") {
 				$statement = $this->con->consultaPreparada("CALL SPCCS02SECEPERUSU(?);");
 				$statement->bind_param("i",$id);
 				//echo "en editar USUARIO";
-			}else {
+			}else if($m=="ver") {
 				$null = 'NULL';
+				$verModal = true;
 				$statement = $this->con->consultaPreparada("CALL SPCCS02SEPERUSU(?,?,?);");
 				$statement->bind_param("iss",$id,$null,$null);
 				//echo "en else USUARIO";
@@ -86,8 +88,63 @@ class Usuario extends Persona
 			{echo("<b>No  se obtuvieron los datos</b><br>"."(" . $statement->errno . ") " . $statement->error);}
 			$statement->close();
 			$this->con->cerrarConexion();
-			$row = mysqli_fetch_array($resultado);
+			if ($verModal) {
+				$mostrar ="";
+			// if($Data){}
+				while ($row = mysqli_fetch_array($resultado)) {
+					$mostrar .= '<tr>
+					<td colspan ="2"> <b>Datos de: </b>'.$row[1].'</td>
+					</tr>
+					<tr>
+					<td> <b>Identificacion: </b></td>
+                    <td id="td_ced">'.$row[0].'</td>
+                    </tr>
+                    <tr>
+                    <td> <b>Numero Usuario: </b></td>
+					<td>'.$row[7].'</td>
+					</tr>
+					<tr>
+					<td> <b>Telefono: </b></td>
+					<td>'.$row[2].'</td>
+					</tr>
+					<tr>
+					<td> <b>Correo Electronico: </b></td>
+					<td>'.$row[4].'</td>
+					</tr>
+					<tr>
+					<td> <b>Direccion: </b></td>
+					<td>'.$row[5].'</td>
+					</tr>
+					<tr>
+					<td> <b>Genero: </b></td>
+					<td>'.$row[3].'</td>
+					</tr>
+					<tr>
+					<td> <b>Fecha Nacimiento: </b></td>
+					<td>'.$row[6].'</td>
+					</tr>
+					<tr>
+					<td> <b>Rol: </b></td>
+					<td>'.$row[9].'</td>
+					</tr>';
+				}
+			// if ($mostrar=="") {
+			// 	$response='<tr>
+			// 	<td>'."sin coincidencias".'</td>
+			// 	<td>'."sin coincidencias".'</td>
+			// 	<td>'."sin coincidencias".'</td>
+			// 	</tr>';
+			// 					  // $response="no suggestion";
+			// } else {
+			// 	$response=$mostrar;
+			// }
+
+			echo $mostrar;
+
+			}else{
+				$row = mysqli_fetch_array($resultado);
 			return $row;
+			}
 			// var_dump($row);
 		}
 		public function actualizarCon($idp,$con){

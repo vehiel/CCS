@@ -33,7 +33,6 @@
 				$this->fiador->set("ema_vc",$_POST['ema_vc']);
 				$this->fiador->set("fna_dt",$_POST['fna_dt']);
 				$this->fiador->set("dir_vc",$_POST['dir_vc']);
-				//$this->fiador->insertarPersona();
 				$this->fiador->set("idf_in",$_POST['idf_in']);
 				$this->fiador->set("emp_vc",$_POST['emp_vc']);
 				$this->fiador->insertarFiador();

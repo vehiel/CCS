@@ -12,7 +12,7 @@
 	  			<form class="form-horizontal" action="?c=prestamista&m=agregar" method="POST">
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Codigo del Prestamista</label>
-				        <input class="form-control" name="cpr_in" type="text" required>
+				        <input class="form-control" name="cpr_in" type="number" required>
 				    </div>
 				    <div class="form-group">
 				      <label for="inputEmail" class="control-label">Nombre del Prestamista</label>

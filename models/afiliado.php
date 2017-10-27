@@ -75,10 +75,6 @@ class Afiliado extends Persona
 		}
 		$statement->execute();
 		if(!($resultado = $statement->get_result())){
-			// if ($afiSol) {
-			// 	$Data = false;
-			// 	//$hint= "No se obtuvieron los datos";
-			// }
 			echo("<b>No  se obtuvieron los datos</b><br>"."(" . $statement->errno . ") " . $statement->error);
 		}
 		$statement->close();

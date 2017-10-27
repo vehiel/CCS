@@ -3,7 +3,7 @@
 		<a href="?c=fiador&m=agregar" class="btn btn-default" role="button">Agregar Fiador</a>
 		<div class="table-responsive">
 			<!-- <div class="col-md-12"> -->
-				<table id="example" class="display" cellspacing="0" width="100%">
+				<table id="tabla_index" class="display" cellspacing="0" width="100%">
 				<?php if ($datos->num_rows) { ?>
 				<thead>
 					<tr>
